@@ -1,0 +1,12 @@
+{% assign entries = include.entries %}
+{% for post in entries limit: include.limit %}
+  {% assign section = site.data.blog_sections | where: 'key', post.section | first %}
+  <article class="entry">
+    <span class="tag">{{ section.name | default: '笔记' | escape }}</span>
+    <div><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+    {% if post.description %}<p>{{ post.description | escape }}</p>{% endif %}</div>
+    <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+  </article>
+{% else %}
+  <p class="empty">这里暂时没有文章。</p>
+{% endfor %}

@@ -1,0 +1,14 @@
+title: 三点的博客
+description: 记录生活、工程采购和学习笔记。
+timezone: Asia/Shanghai
+permalink: /journal/:year-:month-:day-:title.html
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+exclude:
+  - journal/walking-note.html
+  - journal/before-requesting-quotes.html
+  - journal/profit-and-cash.html

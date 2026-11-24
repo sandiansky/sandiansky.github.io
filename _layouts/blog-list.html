@@ -1,0 +1,19 @@
+---
+layout: blog
+---
+<section class="section-heading">
+  <h1>{{ page.title | escape }}</h1>
+  {% if page.description %}<p>{{ page.description | escape }}</p>{% endif %}
+</section>
+{% if page.section %}
+  {% assign entries = site.posts | where: 'section', page.section %}
+{% else %}
+  {% assign entries = site.posts %}
+{% endif %}
+<section class="entry-list" aria-labelledby="entries">
+  <h2 id="entries">{{ page.list_title | default: '文章' | escape }}</h2>
+  {% include blog-entries.html entries=entries limit=entries.size %}
+</section>
+{% if page.section == nil %}
+  <p class="archive"><a href="{{ '/archives/' | relative_url }}">查看旧站归档</a></p>
+{% endif %}

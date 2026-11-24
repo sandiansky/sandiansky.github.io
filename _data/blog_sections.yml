@@ -1,0 +1,9 @@
+- key: life
+  name: 生活
+  description: 散步、羽毛球和日常里值得记下的小事。
+- key: work
+  name: 工作
+  description: 工程采购、现场协作和工具实操。
+- key: learning
+  name: 学习
+  description: 把最近学明白的东西，用自己的话写下来。

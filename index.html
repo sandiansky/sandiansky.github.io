@@ -1,29 +1,18 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="记录生活、工程采购和学习笔记。">
-  <meta name="theme-color" content="#fafaf6">
-  <title>三点的博客</title>
-  <link rel="stylesheet" href="/journal/style.css">
-</head>
-<body>
-  <div class="frame">
-    <header class="top"><a class="brand" href="/">三点的博客</a><nav aria-label="博客栏目"><a href="/#life">生活</a><a href="/#work">工作</a><a href="/#learning">学习</a><a href="/archives/">旧文归档</a></nav></header>
-    <main>
-  <section class="hero" aria-labelledby="blog-title">
-    <div><h1 id="blog-title">三点的博客</h1><p class="intro">写生活里的小事、工程采购里的经验，也记录最近学明白的东西。</p></div>
-    <div class="motif" aria-hidden="true"><span></span></div>
-  </section>
-  <section class="entry-list" aria-labelledby="recent"><h2 id="recent">最近更新</h2>
-    <a class="entry" id="life" href="/journal/walking-note.html"><span class="tag">生活</span><div><h3>散步时，聊一个听得懂的问题</h3><p>给散步留一个主题，从日常问题讲到原理。</p></div><time datetime="2026-11-24">2026-11-24</time></a>
-    <a class="entry" id="work" href="/journal/before-requesting-quotes.html"><span class="tag">工作</span><div><h3>买不熟的设备，询价前先弄清三件事</h3><p>设备用在哪、参数怎么定、到货怎么验，先把这三件事问清楚。</p></div><time datetime="2026-11-24">2026-11-24</time></a>
-    <a class="entry" id="learning" href="/journal/profit-and-cash.html"><span class="tag">学习</span><div><h3>一单生意赚了钱，为什么账上还紧？</h3><p>用一笔先付货款、后收货款的生意理解利润和现金流。</p></div><time datetime="2026-11-24">2026-11-24</time></a>
-  </section>
-  <p class="archive"><a href="/archives/">查看以前写的文章</a></p>
-</main>
-    <footer><span>三点 · 个人博客</span><a href="https://github.com/sandiansky/sandiansky.github.io">GitHub 仓库</a></footer>
-  </div>
-</body>
-</html>
+---
+layout: blog
+---
+<section class="hero" aria-labelledby="blog-title">
+  <div><h1 id="blog-title">{{ site.title | escape }}</h1><p class="intro">写生活里的小事、工程采购里的经验，也记录最近学明白的东西。</p></div>
+  <div class="motif" aria-hidden="true"><span></span></div>
+</section>
+<nav class="section-links" aria-label="按主题浏览">
+  {% for section in site.data.blog_sections %}
+    {% assign path = '/journal/' | append: section.key | append: '/' %}
+    <a id="{{ section.key }}" href="{{ path | relative_url }}"><strong>{{ section.name | escape }}</strong><span>{{ section.description | escape }}</span></a>
+  {% endfor %}
+</nav>
+<section class="entry-list" aria-labelledby="recent">
+  <h2 id="recent">最近更新</h2>
+  {% include blog-entries.html entries=site.posts limit=5 %}
+</section>
+<p class="archive"><a href="{{ '/journal/' | relative_url }}">查看全部文章</a></p>
